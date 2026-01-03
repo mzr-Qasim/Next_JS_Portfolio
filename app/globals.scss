@@ -1,5 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-/* Optionally set body and headings globally */
+
+@use './_variables.scss' as vars;
+@use './_fonts' as fonts; 
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -11,6 +14,7 @@
     --foreground: #ededed;
   }
 }
+
 html,
 body {
   max-width: 100vw;
@@ -23,11 +27,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   overflow: hidden;
   /* hide all overflow */
   overflow-y: auto;
   /* allow vertical scroll only */
-  font-family: "Poppins", sans-serif;
+  font-family: fonts.$primary-font;
   margin: 0;
   /* reset default browser margin */
   padding: 0;
@@ -49,9 +54,13 @@ a {
   text-decoration: none;
 }
 
-li {
+li{
   list-style-type: none;
 }
+
+
+
+
 
 h1,
 h2,
@@ -69,47 +78,57 @@ img {
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Poppins", sans-serif;
+h1,h2,h3,h4,h5,h6{
+    font-family: fonts.$primary-font;
 }
+
 
 .theme_btn {
   display: inline-block;
-  width: -moz-fit-content;
   width: fit-content;
   border-radius: 1rem;
-  padding: 0.6rem 1.5rem;
+  padding: .6rem 1.5rem;
   font-weight: 600;
-  transition: all ease-in-out 0.3s;
-  color: rgb(255, 255, 255);
+  transition: all ease-in-out .3s;
+  color: vars.$white_color;
 }
+
+
 
 .primary_btn {
   background-color: transparent;
-  border: 2px solid hsla(0, 0%, 100%, 0.3);
+  border: 2px solid vars.$secondary_color;
+
+
+  &:hover {
+    background-color: vars.$primary_color;
+    border: 1px solid vars.$primary_color;
+  }
+
 }
-.primary_btn:hover {
-  background-color: #f9004d;
-  border: 1px solid #f9004d;
-}
+
 
 .secondary_btn {
-  background-color: #f9004d;
-  border: 2px solid #f9004d;
-}
-.secondary_btn:hover {
-  background-color: transparent;
-  color: #f9004d;
+  background-color: vars.$primary_color;
+  border: 2px solid vars.$primary_color;
+
+  &:hover {
+    background-color: transparent;
+    color: vars.$primary_color;
+  }
+
 }
 
+
 .Title {
-  color: #f9004d;
+  color: vars.$primary_color;
   font-size: clamp(3rem, 4vw, 6rem);
   text-align: center;
 }
+
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-}/*# sourceMappingURL=globals.css.map */
+}
